@@ -453,3 +453,47 @@ main { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .burger-inner .top-bun, .burger-inner .patty, .burger-inner .bottom-bun, .header-menu { transition: none; }
 }
+
+/* ---------- hand-authored sections ----------
+   Sections scraped from Squarespace position every block on an absolute
+   pixel grid (see the inline <style> in each .fluid-engine section above) —
+   that math only exists because Squarespace generated it, and isn't worth
+   reproducing by hand. New sections instead use this simpler wrapper, which
+   reuses the same tokens (colors, type scale, gutter, max width) so they
+   still sit inside the same design system. */
+.custom-content {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxPageWidth);
+  margin: 0 auto;
+  padding: 0 6vw;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 768px) {
+  .custom-content { padding: 0 var(--pagePadding); }
+}
+
+.image-placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4vw 2.5vw;
+  margin-top: 3rem;
+}
+@media screen and (max-width: 767px) {
+  .image-placeholder-grid { grid-template-columns: 1fr; gap: 8vw; }
+}
+.image-placeholder {
+  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px dashed currentColor;
+  border-radius: 2px;
+  opacity: 0.55;
+  text-align: center;
+  padding: 1rem;
+}
+.image-placeholder svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.image-placeholder span { font-size: 0.8rem; letter-spacing: 0.02em; }
